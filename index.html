@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sacred Plans | El Aranas, end-of-life doula in the San Francisco Bay Area</title>
+  <meta name="description" content="El Aranas walked twenty years as a caregiver. Now, as an end-of-life doula in the San Francisco Bay Area, he helps families prepare sacred plans — heart, wishes, and the practical pieces that keep love in the room." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Source+Sans+3:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --cream: #f4ece1;
+      --cream-deep: #ebe1d2;
+      --paper: #faf6ef;
+      --ink: #2b2622;
+      --ink-soft: #5a534c;
+      --sage: #7d8b78;
+      --sage-deep: #5e6b5b;
+      --sage-pale: #d7e0d4;
+      --gold: #c4a574;
+      --btn: #2f2b28;
+      --white: #fffcf7;
+      --shadow: 0 18px 50px rgba(43, 38, 34, 0.10);
+      --radius: 18px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: "Source Sans 3", system-ui, sans-serif;
+      color: var(--ink);
+      background: var(--cream);
+      line-height: 1.7;
+      font-weight: 400;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; }
+
+    .wrap { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
+    .wrap-narrow { width: min(760px, calc(100% - 40px)); margin: 0 auto; }
+
+    nav {
+      position: sticky; top: 0; z-index: 40;
+      background: rgba(244, 236, 225, 0.88);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(43,38,34,0.06);
+    }
+    .nav-inner {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 14px 0;
+      gap: 16px;
+    }
+    .logo {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.55rem;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 22px; align-items: center; font-size: 0.95rem; }
+    .nav-links a { text-decoration: none; color: var(--ink-soft); }
+    .nav-links a:hover { color: var(--ink); }
+    .menu-btn {
+      display: none;
+      background: none; border: 0; cursor: pointer;
+      font: inherit; color: var(--ink);
+      padding: 8px 10px;
+    }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      background: var(--btn); color: var(--white);
+      text-decoration: none; border-radius: 999px;
+      padding: 13px 22px; font-size: 0.95rem; font-weight: 500;
+      border: 1px solid var(--btn);
+      transition: transform .2s ease, background .2s ease;
+    }
+    .btn:hover { transform: translateY(-1px); background: #1f1c1a; }
+    .btn-ghost {
+      background: transparent; color: var(--ink);
+      border: 1px solid rgba(43,38,34,0.28);
+    }
+    .btn-ghost:hover { background: rgba(255,255,255,0.45); transform: translateY(-1px); }
+    .btn-row { display: flex; flex-wrap: wrap; gap: 12px; }
+
+    .hero {
+      position: relative;
+      min-height: 92vh;
+      display: grid;
+      place-items: end stretch;
+      overflow: hidden;
+    }
+    .hero img.bg {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      object-fit: cover; object-position: center 40%;
+    }
+    .hero::after {
+      content: "";
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(28,22,16,0.18) 0%, rgba(28,22,16,0.28) 40%, rgba(28,22,16,0.62) 100%);
+    }
+    .hero-copy {
+      position: relative; z-index: 2;
+      width: min(880px, calc(100% - 40px));
+      margin: 0 auto 8vh;
+      color: #f7f1e8;
+      padding-bottom: 12px;
+    }
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: #e8d7b8;
+      margin-bottom: 16px;
+    }
+    h1, h2, h3 {
+      font-family: "Cormorant Garamond", serif;
+      font-weight: 500;
+      line-height: 1.12;
+    }
+    h1 { font-size: clamp(2.4rem, 6vw, 4.4rem); margin-bottom: 18px; }
+    h2 { font-size: clamp(2rem, 4.4vw, 3.15rem); }
+    h3 { font-size: 1.55rem; }
+    .lede {
+      font-size: clamp(1.12rem, 2vw, 1.35rem);
+      max-width: 34em;
+      color: #f0e6d6;
+      font-weight: 300;
+      margin-bottom: 28px;
+    }
+
+    section { padding: 88px 0; }
+    .story p, .letter p, .plain p { margin-bottom: 1.15em; font-size: 1.12rem; color: var(--ink-soft); }
+    .letter p:last-child, .story p:last-child { margin-bottom: 0; }
+    .kicker {
+      color: var(--sage-deep);
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .pull {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(1.6rem, 3vw, 2.15rem);
+      line-height: 1.35;
+      color: var(--ink);
+      font-style: italic;
+      margin: 36px 0;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 56px;
+      align-items: center;
+    }
+    .split img {
+      width: 100%; height: 560px; object-fit: cover;
+      border-radius: 22px; box-shadow: var(--shadow);
+    }
+
+    .who-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+      margin-top: 36px;
+    }
+    .card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 28px 26px;
+      box-shadow: var(--shadow);
+    }
+    .card h3 { margin-bottom: 8px; }
+    .card p { color: var(--ink-soft); font-size: 1.02rem; }
+
+    .know {
+      background: #2c2925;
+      color: #f3ece2;
+    }
+    .know .kicker { color: #c9b48a; }
+    .know h2 { color: #f7f1e8; }
+    .know-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      margin-top: 40px;
+    }
+    .know-item {
+      border-top: 1px solid rgba(255,255,255,0.14);
+      padding-top: 18px;
+    }
+    .know-item h3 { font-size: 1.4rem; margin-bottom: 8px; color: #f7f1e8; }
+    .know-item p { color: #d9cfc2; font-size: 1.02rem; }
+
+    .offer-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      margin-top: 36px;
+    }
+    .offer {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 30px 28px;
+      border: 1px solid rgba(43,38,34,0.06);
+    }
+    .offer .num {
+      font-family: "Cormorant Garamond", serif;
+      color: var(--sage-deep);
+      font-size: 1.4rem;
+      margin-bottom: 8px;
+    }
+
+    .steps { counter-reset: step; }
+    .step {
+      display: grid;
+      grid-template-columns: 72px 1fr;
+      gap: 18px;
+      padding: 22px 0;
+      border-bottom: 1px solid rgba(43,38,34,0.08);
+    }
+    .step:last-child { border-bottom: 0; }
+    .step-num {
+      width: 54px; height: 54px; border-radius: 50%;
+      background: var(--sage-pale); color: var(--sage-deep);
+      display: grid; place-items: center;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.4rem;
+    }
+
+    .cta-band {
+      background:
+        linear-gradient(180deg, rgba(28,22,16,0.35), rgba(28,22,16,0.62)),
+        url("images/path.jpg") center/cover no-repeat;
+      color: #f7f1e8;
+      text-align: center;
+      padding: 110px 0;
+    }
+    .cta-band h2 { margin-bottom: 16px; }
+    .cta-band p { max-width: 34em; margin: 0 auto 28px; color: #efe4d4; font-size: 1.15rem; }
+    .cta-band .btn-row { justify-content: center; }
+    .cta-band .btn-ghost { color: #f7f1e8; border-color: rgba(247,241,232,0.45); }
+
+    footer {
+      background: #241f1b;
+      color: #d8cfc4;
+      padding: 56px 0 28px;
+      font-size: 0.95rem;
+    }
+    .foot-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 32px;
+      margin-bottom: 36px;
+    }
+    footer h3 { color: #f7f1e8; margin-bottom: 10px; font-size: 1.35rem; }
+    footer a { color: #e7dccb; text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+    .fine {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 18px;
+      color: #b6ada2;
+      font-size: 0.82rem;
+    }
+
+    .quote-block {
+      background: var(--paper);
+      border-left: 3px solid var(--gold);
+      padding: 22px 26px;
+      margin: 28px 0;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.45rem;
+      font-style: italic;
+      line-height: 1.4;
+      color: var(--ink);
+    }
+
+    .begin-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+    .portrait-row {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 28px;
+      align-items: center;
+      margin: 36px 0 8px;
+    }
+    .portrait-row img {
+      width: 220px; height: 220px;
+      object-fit: cover;
+      object-position: center 20%;
+      border-radius: 50%;
+      box-shadow: var(--shadow);
+    }
+    .portrait-row .who { font-size: 1.05rem; color: var(--ink-soft); }
+    .portrait-row strong { color: var(--ink); font-weight: 600; }
+    .quiet-list {
+      list-style: none;
+      margin: 22px 0 0;
+      display: grid;
+      gap: 14px;
+    }
+    .quiet-list li {
+      background: var(--white);
+      border-radius: 14px;
+      padding: 16px 18px;
+      color: var(--ink-soft);
+    }
+    .quiet-list b { color: var(--ink); font-weight: 600; }
+
+    @media (max-width: 860px) {
+      .menu-btn { display: block; }
+      .nav-links {
+        display: none;
+        position: absolute; top: 62px; left: 0; right: 0;
+        background: rgba(244,236,225,0.97);
+        flex-direction: column; align-items: flex-start;
+        padding: 12px 20px 20px; gap: 14px;
+        border-bottom: 1px solid rgba(43,38,34,0.06);
+      }
+      .nav-links.open { display: flex; }
+      .split, .who-grid, .know-grid, .offer-grid, .foot-grid, .begin-grid, .portrait-row {
+        grid-template-columns: 1fr;
+      }
+      .portrait-row img { width: 160px; height: 160px; }
+      .split img { height: 320px; }
+      section { padding: 64px 0; }
+      .hero { min-height: 86vh; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <a class="logo" href="#top">Sacred Plans</a>
+      <div class="nav-links" id="navLinks">
+        <a href="#story">The story</a>
+        <a href="#for">Who this is for</a>
+        <a href="#walk">How we walk</a>
+        <a href="#prepared">Preparation</a>
+        <a href="#begin">Begin</a>
+      </div>
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu">Menu</button>
+      <a class="btn" href="https://calendly.com/lighthousecalendar/30min" target="_blank" rel="noopener">A gentle conversation</a>
+    </div>
+  </nav>
+
+  <header class="hero" id="top">
+    <img class="bg" src="images/hero-window.jpg" alt="Late afternoon light through linen curtains in a quiet room" />
+    <div class="hero-copy">
+      <p class="eyebrow">A letter from El Aranas · San Francisco Bay Area</p>
+      <h1>I came home for a season.<br />It became twenty years.</h1>
+      <p class="lede">If your heart already knows it is the right thing to care for the people who cared for you — and you do not want to disappear while you do it — you are in the right place.</p>
+      <div class="btn-row">
+        <a class="btn" href="https://calendly.com/lighthousecalendar/30min" target="_blank" rel="noopener">Sit with me for 30 minutes</a>
+        <a class="btn btn-ghost" href="#story">Read the story</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="letter" id="story">
+    <div class="wrap-narrow">
+      <p class="kicker">Why I am here</p>
+      <h2>This is my story. This is my gift to share.</h2>
+      <div class="portrait-row">
+        <img src="images/el-aranas.jpg" alt="El Aranas, end-of-life doula in the San Francisco Bay Area" />
+        <p class="who"><strong>El Aranas</strong><br />End-of-life doula · caregiver for twenty years<br />San Francisco Bay Area</p>
+      </div>
+      <p>When my father had a stroke, I volunteered to come home. You do not think much about one year, or two, until it turns into five, then ten, then twenty. I cared for my dad. Then I cared for my parents. It was an honor. It was also a disappearing.</p>
+      <p>I know the blessings. I know the hardships. I know the longevity it takes. I know the quiet strain money puts on a family, and the dynamics that no one puts on the greeting card. I know what it is to love someone so completely that you forget to ask who you are when the room gets quiet.</p>
+      <p class="pull">When they transitioned home, I did not know who I was. I did not know what I liked to do. I guessed. I tried industry after industry. For a long time I chased what looked practical and held this gift to myself.</p>
+      <p>I went into hospice work as a home health aide and CNA, and I loved it the way a thirsty person loves water. I was present with nearly one hundred souls on their way home. Sometimes it happened in the middle of a bed bath. Sometimes I simply sat, so that if there was fear, they would not have to carry it alone. I wanted them to have a choice. I gave every beautiful person all the love I had — until I had no more to give. I had no boundaries. I burned out again.</p>
+      <p>What I know now is simple. Presence is the work. And presence is protected by a few quiet decisions made while there is still time.</p>
+      <div class="quote-block">I see God in everyone and everything. I meditate. I believe the threshold between worlds is holy. And I believe love deserves a plan, so the people in the room can stay human.</div>
+    </div>
+  </section>
+
+  <section style="padding-top:0;">
+    <div class="wrap split">
+      <img src="images/hands.jpg" alt="A younger hand resting gently over an elder's hand" />
+      <div class="plain">
+        <p class="kicker">The turning</p>
+        <h2>You can be the son or the daughter again.</h2>
+        <p>So many adult children become unpaid nurses, case managers, night-shift attendants, and family diplomats — and then feel guilty for wanting a walk around the block. I lived that. I do not want that to be the only way love can look.</p>
+        <p>Sacred Plans exists so that the people you love can be prepared — their wishes spoken, a few quiet provisions in place — and so that you can remain their child, their person, not only their 24/7 caregiver.</p>
+        <p>It also exists for you, while you are still well enough to make your own sacred plan. The greatest kindness we can offer the next generation is not more stoicism. It is a map.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="for" style="background: var(--cream-deep);">
+    <div class="wrap">
+      <p class="kicker">If this is you</p>
+      <h2>Come as you are. Tired counts.</h2>
+      <div class="who-grid">
+        <article class="card">
+          <h3>The one who already knows</h3>
+          <p>You feel it in your chest: it is the right thing to care for them the best way you can. You do not need convincing. You need a way to do it without losing yourself.</p>
+        </article>
+        <article class="card">
+          <h3>The caregiver who cannot rest</h3>
+          <p>You wonder where a caregiver goes to recharge without the guilt. You feel helpless in a system that is large and a house that is small. You are allowed to put the pitcher down and drink.</p>
+        </article>
+        <article class="card">
+          <h3>The family in the thick of it</h3>
+          <p>Someone has had a stroke, a diagnosis, a slow change no one can name yet. Decisions are arriving faster than wisdom. We can slow the room down.</p>
+        </article>
+        <article class="card">
+          <h3>The adult writing their own plan</h3>
+          <p>You do not want your children to guess. You want your wishes, your papers, and your values in one sacred place — so the people who love you can stay present instead of scrambling.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="know">
+    <div class="wrap">
+      <p class="kicker">What twenty years taught me</p>
+      <h2>I will not pretend this is only beautiful.</h2>
+      <p style="max-width:38em; color:#d9cfc2; font-size:1.12rem; margin-top:12px;">Honor and hardship live in the same house. Naming both is how we keep caregivers from disappearing.</p>
+      <div class="know-grid">
+        <div class="know-item">
+          <h3>The blessing</h3>
+          <p>To wash a face you have loved your whole life. To be there. To learn that presence is a language older than advice.</p>
+        </div>
+        <div class="know-item">
+          <h3>The longevity</h3>
+          <p>Stroke, decline, and devotion do not run on a tidy timeline. A year becomes a decade while you are still calling it temporary.</p>
+        </div>
+        <div class="know-item">
+          <h3>The unprepared</h3>
+          <p>Love does the labor either way. Without a few things in place, the labor gets heavier than it ever needed to be.</p>
+        </div>
+        <div class="know-item">
+          <h3>The family</h3>
+          <p>Siblings, history, and unspoken expectations arrive at the bedside whether you invite them or not. Someone has to hold the center.</p>
+        </div>
+        <div class="know-item">
+          <h3>The guilt</h3>
+          <p>Rest feels like betrayal until you learn that a depleted caregiver cannot keep a peaceful house. Rest is part of the care plan.</p>
+        </div>
+        <div class="know-item">
+          <h3>The threshold</h3>
+          <p>People do not always need fixing. Sometimes they need a witness — so fear has company, and leaving is not lonely.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="walk">
+    <div class="wrap">
+      <p class="kicker">Sacred Plans</p>
+      <h2>How we walk together</h2>
+      <p class="plain" style="max-width:40em; color:var(--ink-soft); font-size:1.12rem; margin: 12px 0 0;">I am an end-of-life doula. The heart work comes first. When you are ready, the practical pieces can sit beside it — quietly — so love is not asked to do a job it was never meant to do alone.</p>
+      <div class="offer-grid">
+        <article class="offer">
+          <div class="num">01</div>
+          <h3>Prepare your parents</h3>
+          <p>Wishes spoken while there is still time. Financial papers found and faced. Healthcare choices written down. The conversations that keep a crisis from becoming a war.</p>
+        </article>
+        <article class="offer">
+          <div class="num">02</div>
+          <h3>Prepare your own sacred plan</h3>
+          <p>A living gift to the next generation of caregiving children: what you want, what you do not want, where the papers live, and how you hope to be companioned at the end.</p>
+        </article>
+        <article class="offer">
+          <div class="num">03</div>
+          <h3>Doula presence</h3>
+          <p>Non-medical companionship before, during, and after the dying time. Vigil sitting. Ritual. Legacy. A calm body in the room when the family needs to be family.</p>
+        </article>
+        <article class="offer">
+          <div class="num">04</div>
+          <h3>Caregiver restoration</h3>
+          <p>Help naming boundaries before burnout writes them for you. Permission to recharge. A place to say the unsayable without being told you are selfish for needing air.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0;">
+    <div class="wrap split">
+      <div class="plain">
+        <p class="kicker">What a doula is — and is not</p>
+        <h2>I hold the space. Medicine holds the body.</h2>
+        <p>An end-of-life doula does not replace hospice, physicians, nurses, attorneys, or faith leaders. I walk beside them. I help you prepare, speak, rest, and remain present. I can sit so a person does not have to die alone if that is their fear. I can sit so you can sleep.</p>
+        <p>During my years as a CNA and home health aide, I learned that the smallest kindnesses — a warm cloth, a quiet chair, a hand that does not flinch — can turn a frightening passage into a human one.</p>
+        <p>If and when it is time to talk about papers and provisions, we will. Not as a pitch. As part of keeping the people you love from having to invent a plan in a waiting room.</p>
+      </div>
+      <img src="images/plans.jpg" alt="A candle, a journal, and a small wooden bowl on linen" />
+    </div>
+  </section>
+
+  <section id="prepared">
+    <div class="wrap-narrow">
+      <p class="kicker">What I learned the long way</p>
+      <h2>Some of the hardness was love. Some of it was missing pieces.</h2>
+      <p style="color:var(--ink-soft); font-size:1.12rem; margin-top:14px;">I will not meet you with a stack of products. The first conversation is a human one. I only mention this because I lived the difference it would have made — for my parents, and for me.</p>
+      <p style="color:var(--ink-soft); font-size:1.12rem; margin-top:12px;">When a family has already chosen, in calm daylight, a few simple things, the people at the bedside get to remain a son or a daughter. The plan holds the weight that love should not have to carry alone.</p>
+      <ul class="quiet-list">
+        <li><b>A will or a trust.</b> So wishes are clear, and siblings are not left to guess in grief.</li>
+        <li><b>Life insurance, if it belongs in the picture.</b> So a death does not also become a financial emergency.</li>
+        <li><b>A thought for long-term care.</b> Because twenty years taught me that “just for now” can become a life.</li>
+        <li><b>Funeral or memorial wishes.</b> So no one has to invent a goodbye while they are still in shock.</li>
+      </ul>
+      <p style="color:var(--ink-soft); font-size:1.08rem; margin-top:22px;">We talk about these only when the heart has been heard. I can walk with you toward the right licensed people and the right papers. You stay in the relationship. The documents keep watch.</p>
+    </div>
+  </section>
+
+  <section style="background: var(--paper);" id="begin">
+    <div class="wrap begin-grid">
+      <div>
+        <p class="kicker">A first step that does not ask too much</p>
+        <h2>You do not have to have it together to begin.</h2>
+        <p style="color:var(--ink-soft); font-size:1.12rem; margin: 14px 0 22px;">There is no sales pitch waiting on the other side of this page. There is a conversation. We find out what is needed. We take the next kind step, and then the one after that.</p>
+        <div class="btn-row">
+          <a class="btn" href="https://calendly.com/lighthousecalendar/30min" target="_blank" rel="noopener">Schedule a gentle conversation</a>
+          <a class="btn btn-ghost" href="mailto:hello@sacredplans.com">Write to me</a>
+        </div>
+        <p style="margin-top:18px; color:var(--ink-soft); font-size:0.98rem;">30 minutes · no obligation · Pleasanton, CA and beyond · (510) 606-5199</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div>
+            <h3>We talk</h3>
+            <p style="color:var(--ink-soft);">You tell me where it hurts, what you hope, and what feels impossible. I listen all the way to the end of the sentence.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div>
+            <h3>We name the plan</h3>
+            <p style="color:var(--ink-soft);">Documents, wishes, extra hands, vigil support, or a sacred plan of your own. Only what serves.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div>
+            <h3>We keep you human</h3>
+            <p style="color:var(--ink-soft);">The goal is not a perfect death. The goal is a family that can still recognize itself when the hard days come.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="wrap-narrow">
+      <p class="eyebrow">An invitation</p>
+      <h2>If you have been carrying this alone, you can put a little of it down.</h2>
+      <p>I held this gift close while I tried to become someone more impressive on paper. I am done hiding it. If your family needs a companion, a plan, or simply a calm voice that has walked the long road — I would be honored to meet you.</p>
+      <div class="btn-row">
+        <a class="btn" href="https://calendly.com/lighthousecalendar/30min" target="_blank" rel="noopener">Begin here</a>
+        <a class="btn btn-ghost" href="tel:+15106065199">Call (510) 606-5199</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap foot-grid">
+      <div>
+        <h3>Sacred Plans</h3>
+        <p>El Aranas · San Francisco Bay Area<br />Compassionate end-of-life doula support and thoughtful preparation, so families can stay present with one another.</p>
+      </div>
+      <div>
+        <h3>Visit</h3>
+        <p><a href="#story">The story</a><br />
+        <a href="#for">Who this is for</a><br />
+        <a href="#walk">How we walk</a><br />
+        <a href="#prepared">Preparation</a><br />
+        <a href="#begin">Begin</a></p>
+      </div>
+      <div>
+        <h3>Connect</h3>
+        <p><a href="mailto:hello@sacredplans.com">hello@sacredplans.com</a><br />
+        <a href="tel:+15106065199">(510) 606-5199</a><br />
+        San Francisco Bay Area</p>
+      </div>
+    </div>
+    <div class="wrap fine">
+      <p>Sacred Plans offers compassionate guidance and educational information. This is not legal, tax, or medical advice. Families are encouraged to work with licensed professionals for specific legal, financial, or medical needs. End-of-life doula support is non-medical and complementary to hospice and clinical care.</p>
+      <p style="margin-top:10px;">© 2026 Sacred Plans. All rights reserved.</p>
+    </div>
+  </footer>
+  <script>
+    const btn = document.getElementById("menuBtn");
+    const links = document.getElementById("navLinks");
+    btn.addEventListener("click", () => {
+      const open = links.classList.toggle("open");
+      btn.textContent = open ? "Close" : "Menu";
+    });
+    links.querySelectorAll("a").forEach(a => a.addEventListener("click", () => {
+      links.classList.remove("open");
+      btn.textContent = "Menu";
+    }));
+  </script>
+</body>
+</html>
